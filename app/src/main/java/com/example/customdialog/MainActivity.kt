@@ -1,9 +1,11 @@
 package com.example.customdialog
 
+import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.google.android.material.snackbar.Snackbar
@@ -19,14 +21,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        btnImageButtons = findViewById(R.id.llImageButtons)
-        btnImageButtons?.setOnClickListener{ view ->
+
+        btnImageButtons = findViewById(R.id.ibSnackBar)
+        btnImageButtons?.setOnClickListener{view ->
             Snackbar.make(view, "You hav clicked image button", Snackbar.LENGTH_SHORT).show()
         }
 
         btnAlert = findViewById(R.id.btnAlert)
         btnAlert?.setOnClickListener {view ->
             alertDialogFunction()
+        }
+
+        btnCustom = findViewById(R.id.btnCustom)
+        btnCustom?.setOnClickListener{view ->
+            customDialogFunction()
         }
     }
 
@@ -54,5 +62,22 @@ class MainActivity : AppCompatActivity() {
         val alertDialog = builder.create()
         alertDialog.setCancelable(false)
         alertDialog.show()
+    }
+
+    private fun customDialogFunction(){
+        val customDialog = Dialog(this)
+
+        customDialog.setContentView(R.layout.dialog_custom)
+        customDialog.findViewById<TextView>(R.id.tvSubmit).setOnClickListener{view ->
+            Toast.makeText(applicationContext, "clicked submit", Toast.LENGTH_SHORT).show()
+            customDialog.dismiss()
+        }
+
+        customDialog.findViewById<TextView>(R.id.tvCancel).setOnClickListener{view ->
+            Toast.makeText(applicationContext, "clicked cancel", Toast.LENGTH_SHORT).show()
+            customDialog.dismiss()
+        }
+
+        customDialog.show()
     }
 }

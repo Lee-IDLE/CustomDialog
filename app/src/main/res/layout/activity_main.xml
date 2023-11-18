@@ -42,16 +42,22 @@
     <Button
         android:id="@+id/btnAlert"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="Alert Button"
+        />
 
     <Button
         android:id="@+id/btnCustom"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="Custom Dialog Button"
+        />
 
     <Button
         android:id="@+id/btnCustomProgress"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="Progress Dialog Button"
+        />
 
 </LinearLayout>
