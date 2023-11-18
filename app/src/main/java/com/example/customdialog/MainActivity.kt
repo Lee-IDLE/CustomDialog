@@ -3,12 +3,15 @@ package com.example.customdialog
 import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.delay
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,6 +38,11 @@ class MainActivity : AppCompatActivity() {
         btnCustom = findViewById(R.id.btnCustom)
         btnCustom?.setOnClickListener{view ->
             customDialogFunction()
+        }
+
+        btnCustomProgress = findViewById(R.id.btnCustomProgress)
+        btnCustomProgress?.setOnClickListener {view ->
+            customPrgoressDialogFunction()
         }
     }
 
@@ -64,7 +72,7 @@ class MainActivity : AppCompatActivity() {
         alertDialog.show()
     }
 
-    private fun customDialogFunction(){
+    private fun customDialogFunction() {
         val customDialog = Dialog(this)
 
         customDialog.setContentView(R.layout.dialog_custom)
@@ -79,5 +87,19 @@ class MainActivity : AppCompatActivity() {
         }
 
         customDialog.show()
+    }
+
+    private fun customPrgoressDialogFunction() {
+        val customProgressDialog = Dialog(this)
+
+        customProgressDialog.setContentView(R.layout.dialog_custom_progress)
+        customProgressDialog.setCancelable(false);
+        customProgressDialog.show()
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            customProgressDialog.dismiss()
+        }, 3000)
+
+
     }
 }
